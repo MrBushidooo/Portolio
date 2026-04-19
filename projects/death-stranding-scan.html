@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Death Stranding Scan System — Leonard Panging</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="../index.html">Leonard Panging<span>.</span></a>
+    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Projects</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <header class="project-detail-hero">
+    <p class="breadcrumb"><a href="../index.html">← Projects</a></p>
+    <div class="project-tags" style="justify-content:center;display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.75rem;">
+      <span class="project-tag">C++</span>
+      <span class="project-tag">Post Process Materials</span>
+      <span class="project-tag">Game Systems</span>
+      <span class="project-tag">UE5.2</span>
+    </div>
+    <h1>Death Stranding Terrain Scan System</h1>
+    <p class="lead">Custom terrain pulse post-process effect with Fresnel bitmask highlighting, a first-person visor mode, and live object distance tracking.</p>
+  </header>
+
+  <dl class="project-meta-strip">
+    <div class="project-meta-item"><dt>Genre</dt><dd>Standalone Game System</dd></div>
+    <div class="project-meta-item"><dt>Platform</dt><dd>PC (Windows)</dd></div>
+    <div class="project-meta-item"><dt>Engine</dt><dd>Unreal Engine 5.2</dd></div>
+    <div class="project-meta-item"><dt>Tools</dt><dd>C++, Blueprint Scripting</dd></div>
+  </dl>
+
+  <div class="project-detail-body">
+
+    <section class="detail-section fade-up">
+      <h2>Project Goal</h2>
+      <p>Recreate and expand upon the scan pulse mechanic from Death Stranding as a standalone, modular gameplay system — enhancing player interaction with the game world through detection, visual highlighting, and information overlays.</p>
+    </section>
+
+    <section class="detail-section fade-up">
+      <h2>Core Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>Terrain Scan Pulse</h4>
+          <p>Forward-emitting pulse that visually scans the environment, highlighting terrain, buildings, and structures in the player's line of sight.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Scannable Object Interface</h4>
+          <p>Unified interface implemented by all scannable actors for modular, scalable detection across any actor type.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Objective Detection</h4>
+          <p>Detection and tagging of structures linked to current objectives, with visual indicators to guide player progression.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Threat Detection</h4>
+          <p>Identifies hidden dangers such as underground mines, displaying warning markers to inform the player of nearby threats.</p>
+        </div>
+        <div class="feature-card">
+          <h4>First-Person Visor Mode</h4>
+          <p>Zoomable visor overlaying detailed object information, driven by a per-frame line trace from the camera.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Pinning &amp; Distance Tracking</h4>
+          <p>Pin any scanned object to show a persistent on-screen marker with real-time distance from the player.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section fade-up">
+      <h2>Post Process Material Breakdown</h2>
+
+      <h3>1. Scan Texture</h3>
+      <p>Combines a grid and gradient texture projected in world space via WorldAlignedTexture — keeping the effect seamless across any surface. SceneTexture WorldNormal ensures correct projection over terrain geometry.</p>
+      <ul>
+        <li><strong>GridSize</strong> — Adjusts density of grid lines across world space</li>
+        <li><strong>GradientSize</strong> — Controls the width of the gradient band / pulse edge</li>
+      </ul>
+
+      <h3>2. Sphere Mask (Animated Pulse)</h3>
+      <p>A hollow sphere mask centered on the player, radius animated by a Blueprint timeline to produce the expanding scan pulse.</p>
+      <ul>
+        <li><strong>PlayerPosition</strong> — Continuously set via Material Parameter Collection (MPC)</li>
+        <li><strong>Radius</strong> — Animated by timeline for expanding scan</li>
+        <li><strong>Hardness</strong> — Controls softness/thickness of the ring's edge</li>
+      </ul>
+
+      <h3>3. Fresnel Highlighting with Bit Masking</h3>
+      <p>Dynamic object highlighting using a Fresnel effect, with highlight colour determined by each object's stencil value via bit masking. Allows multiple highlight colours to coexist based on object-specific stencil values (e.g. threats vs. objectives).</p>
+    </section>
+
+    <section class="detail-section fade-up">
+      <h2>ScanObject Interface</h2>
+      <p>Applied to all actors that can be scanned via the visor. A per-frame line trace checks if the hit actor implements the interface, then calls the appropriate function.</p>
+      <ul>
+        <li><strong>setIsThreat(bool)</strong> — Marks the actor as a threat; appearance reacts accordingly</li>
+        <li><strong>getIsThreat()</strong> — Returns threat status, used by UI and stencil assignment at BeginPlay</li>
+        <li><strong>pin() / unpin()</strong> — Enables/disables persistent distance tracking for the actor</li>
+        <li><strong>focus()</strong> — Called on visor hover; triggers info widget display</li>
+      </ul>
+    </section>
+
+    <div style="padding-top:2rem;border-top:1px solid var(--border);">
+      <a href="../index.html" class="btn btn-secondary">← Back to Projects</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2025 Leonard Panging</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/leonard-panging-a372b2229" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="http://www.youtube.com/@LeonardPanging" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/MrBushidooo" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://x.com/leo_fbx" target="_blank" rel="noopener">X</a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

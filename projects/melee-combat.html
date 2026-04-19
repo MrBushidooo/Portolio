@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Melee Combat System — Leonard Panging</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="../index.html">Leonard Panging<span>.</span></a>
+    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Projects</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <header class="project-detail-hero">
+    <p class="breadcrumb"><a href="../index.html">← Projects</a></p>
+    <div class="project-tags" style="justify-content:center;display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.75rem;">
+      <span class="project-tag">Blueprints</span>
+      <span class="project-tag">AI / Behavior Trees</span>
+      <span class="project-tag">EQS</span>
+      <span class="project-tag">UE5</span>
+    </div>
+    <h1>Melee Combat System</h1>
+    <p class="lead">Modular third-person combat with combo attacks, parry mechanics, and EQS-driven enemy AI — inspired by Sekiro and Ghost of Tsushima.</p>
+  </header>
+
+  <dl class="project-meta-strip">
+    <div class="project-meta-item"><dt>Genre</dt><dd>Third-Person RPG / Combat</dd></div>
+    <div class="project-meta-item"><dt>Platform</dt><dd>PC (Windows)</dd></div>
+    <div class="project-meta-item"><dt>Engine</dt><dd>Unreal Engine 5.2</dd></div>
+    <div class="project-meta-item"><dt>Tools</dt><dd>Blueprints, Behavior Trees, Niagara</dd></div>
+  </dl>
+
+  <div class="project-detail-body">
+
+    <div style="margin-bottom:2rem;" class="fade-up">
+      <a href="https://drive.google.com/drive/folders/1jWigeaN3N8AYRt2du7od_GH6Y4pzyDy4?usp=drive_link"
+         target="_blank" rel="noopener" class="btn btn-primary">▶ Play Demo</a>
+    </div>
+
+    <section class="detail-section fade-up">
+      <h2>Project Goal</h2>
+      <p>Design and develop a modular, responsive third-person melee combat system with proper collision handling, a flexible damage system, dynamic enemy AI, and full visual/audio feedback. Built for scalability — clean enough to support a full RPG.</p>
+    </section>
+
+    <section class="detail-section fade-up">
+      <h2>Combat Mechanics</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>Light &amp; Heavy Attack Combos</h4>
+          <p>Chained animations using montage-based combo logic. Players can switch between light and heavy attacks mid-chain.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Directional Attacks</h4>
+          <p>Attacks respond to player movement direction and aim for more dynamic, readable combat.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Hit Detection</h4>
+          <p>Precise weapon collision using custom trace logic for accurate, responsive hit registration.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Blocking System</h4>
+          <p>Negates incoming damage depending on stamina level and enemy attack type.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Parry System</h4>
+          <p>Parry window controlled via anim notifies. Timed parries trigger hit-stun animations and open enemies to counterattacks.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section fade-up">
+      <h2>Damage System</h2>
+      <p>Built around a custom <strong>DamageComponent</strong> and <strong>DamageInterface</strong> — attachable to any actor for consistent damage handling with per-actor customisation. Both Player and Enemy implement IDamageInterface for shared calls with their own response logic.</p>
+      <h3>Interface Functions</h3>
+      <ul>
+        <li><strong>TakeDamage()</strong> — Accepts incoming damage, triggers hit reactions and VFX</li>
+        <li><strong>Heal()</strong> — Restores health up to the actor's maximum</li>
+        <li><strong>SetMaxHealth / SetCurrentHealth</strong> — Blueprint or runtime stat setup</li>
+        <li><strong>Die / OnDeath</strong> — Actor-specific death behavior</li>
+        <li><strong>GetCurrentHealth, IsDead</strong> — Status queries for UI, combat logic, and AI</li>
+      </ul>
+    </section>
+
+    <section class="detail-section fade-up">
+      <h2>Enemy AI</h2>
+      <ul>
+        <li><strong>Fast Attackers</strong> — Strike quickly and unpredictably, forcing faster player reactions</li>
+        <li><strong>Strafing Enemies</strong> — Actively reposition using EQS before engaging</li>
+        <li><strong>Boss Enemies</strong> — Heavy-hitting with larger hitboxes and aggressive AI logic</li>
+      </ul>
+      <h3>AI States</h3>
+      <p>Idle · Attack · Frozen (Dazed/Parried) · Strafe</p>
+      <div class="feature-grid" style="margin-top:1rem;">
+        <div class="feature-card">
+          <h4>AI Controller</h4>
+          <p>Manages Behavior Tree execution and converts Perception System updates into Blackboard changes for state transitions.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Behavior Trees</h4>
+          <p>Each enemy class has a unique Behavior Tree driving state switching in response to Blackboard changes.</p>
+        </div>
+        <div class="feature-card">
+          <h4>AI Perception</h4>
+          <p>Sight-based player detection. Sends perception updates to the AI Controller for state transitions.</p>
+        </div>
+        <div class="feature-card">
+          <h4>EQS</h4>
+          <p>Scores environment points based on distance and visibility for dynamic enemy strafing and positioning.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section fade-up">
+      <h2>Visual &amp; Audio Feedback</h2>
+      <h3>VFX (Niagara)</h3>
+      <ul>
+        <li>Weapon trails on fast swings to convey motion and power</li>
+        <li>Hit impact effects — sparks and blood bursts on hit events</li>
+        <li>Sharp flashes and burst effects on parry and block</li>
+      </ul>
+      <h3>SFX</h3>
+      <ul>
+        <li>Different swoosh sounds for light and heavy attacks</li>
+        <li>Varying impact sounds depending on hit area</li>
+        <li>Sharp metallic audio cues on successful parry and block</li>
+      </ul>
+    </section>
+
+    <div style="padding-top:2rem;border-top:1px solid var(--border);">
+      <a href="../index.html" class="btn btn-secondary">← Back to Projects</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2025 Leonard Panging</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/leonard-panging-a372b2229" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="http://www.youtube.com/@LeonardPanging" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/MrBushidooo" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://x.com/leo_fbx" target="_blank" rel="noopener">X</a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

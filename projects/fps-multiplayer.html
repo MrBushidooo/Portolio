@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multiplayer FPS — Leonard Panging</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="../index.html">Leonard Panging<span>.</span></a>
+    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Projects</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <header class="project-detail-hero">
+    <p class="breadcrumb"><a href="../index.html">← Projects</a></p>
+    <div class="project-tags" style="justify-content:center;display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.75rem;">
+      <span class="project-tag">C++</span>
+      <span class="project-tag">Multiplayer</span>
+      <span class="project-tag">AWS GameLift</span>
+      <span class="project-tag">UE5.5</span>
+    </div>
+    <h1>Multiplayer First Person Shooter</h1>
+    <p class="lead">Server-authoritative multiplayer FPS in Unreal Engine 5 with a dedicated server architecture hosted on AWS GameLift.</p>
+  </header>
+
+  <dl class="project-meta-strip">
+    <div class="project-meta-item"><dt>Genre</dt><dd>Multiplayer FPS</dd></div>
+    <div class="project-meta-item"><dt>Platform</dt><dd>PC (Windows)</dd></div>
+    <div class="project-meta-item"><dt>Engine</dt><dd>Unreal Engine 5.5</dd></div>
+    <div class="project-meta-item"><dt>Programming</dt><dd>C++ &amp; Blueprints</dd></div>
+    <div class="project-meta-item"><dt>Online</dt><dd>AWS GameLift</dd></div>
+  </dl>
+
+  <div class="project-detail-body">
+
+    <section class="detail-section fade-up">
+      <h2>Project Goal</h2>
+      <p>Design and implement a multiplayer FPS using Unreal Engine 5 with a dedicated server architecture — building a network-aware, server-authoritative experience similar to real online competitive shooters.</p>
+      <p>Key learning objectives:</p>
+      <ul>
+        <li>Multiplayer architecture in Unreal Engine (Client-Server model)</li>
+        <li>Server-authoritative gameplay design, replication, RPCs, and network ownership</li>
+        <li>Dedicated server deployment and testing with AWS GameLift</li>
+        <li>Session management (Create/Join flow) and multi-client testing</li>
+      </ul>
+    </section>
+
+    <section class="detail-section fade-up">
+      <h2>Project Overview</h2>
+      <p>A server-authoritative multiplayer FPS in UE5.5, demonstrating networking architecture and competitive combat mechanics. All core gameplay logic — firing, hit detection, damage — is validated on the server to maintain fairness and synchronisation across clients.</p>
+      <p>The project integrates AWS GameLift for cloud dedicated server hosting with a session-based matchmaking flow, simulating a real production multiplayer pipeline.</p>
+    </section>
+
+    <section class="detail-section fade-up">
+      <h2>Core Features &amp; Systems</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>Movement System</h4>
+          <p>Replicated character movement with server-validated sprint and client-server synchronisation across all connected players.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Weapon System</h4>
+          <p>Server-authoritative line-trace shooting with replicated muzzle flash, impact VFX, and sound. Damage confirmed server-side via RPC.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Aim Down Sights</h4>
+          <p>Hold-based ADS with smooth camera FOV transition. Replicated ADS state ensures correct animation alignment for all clients.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Flash Grenade</h4>
+          <p>Physics-simulated throwable, server-spawned and replicated. Screen-blind effect applied via Client RPCs after server-side distance checks.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Reveal Grenade</h4>
+          <p>Reveals enemy positions within a radius via server-side radial scan. Wall-through visibility using post-process materials and custom depth.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Bullet Decals &amp; Hit VFX</h4>
+          <p>Server-authoritative hit confirmation spawns impact decals and VFX, replicated so all clients see consistent hit feedback.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section fade-up">
+      <h2>Networking Architecture</h2>
+      <h3>Server-Authoritative Design</h3>
+      <p>All core gameplay logic is validated on the server before being replicated to clients, ensuring fairness and preventing exploits.</p>
+      <h3>RPCs</h3>
+      <ul>
+        <li><strong>Server RPCs:</strong> Player input (firing, ADS, grenades) sent from client to server for validation</li>
+        <li><strong>Client RPCs:</strong> Effects like flash blindness sent from server back to specific clients</li>
+        <li><strong>Multicast RPCs:</strong> VFX events broadcast to all connected clients</li>
+      </ul>
+      <h3>AWS GameLift Integration</h3>
+      <p>Server builds are deployed to a live cloud environment. A REST API integration handles client-side matchmaking to connect players to active dedicated servers, enabling remote testing in a real online infrastructure.</p>
+    </section>
+
+    <div style="padding-top:2rem;border-top:1px solid var(--border);">
+      <a href="../index.html" class="btn btn-secondary">← Back to Projects</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2025 Leonard Panging</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/leonard-panging-a372b2229" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="http://www.youtube.com/@LeonardPanging" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/MrBushidooo" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://x.com/leo_fbx" target="_blank" rel="noopener">X</a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
