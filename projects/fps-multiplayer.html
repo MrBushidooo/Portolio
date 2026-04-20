@@ -69,35 +69,84 @@
     </section>
 
     <section class="detail-section fade-up">
-      <h2>Core Features &amp; Systems</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h4>Movement System</h4>
-          <p>Replicated character movement with server-validated sprint and client-server synchronisation across all connected players.</p>
-        </div>
-        <div class="feature-card">
-          <h4>Weapon System</h4>
-          <p>Server-authoritative line-trace shooting with replicated muzzle flash, impact VFX, and sound. Damage confirmed server-side via RPC.</p>
-        </div>
-        <div class="feature-card">
-          <h4>Aim Down Sights</h4>
-          <p>Hold-based ADS with smooth camera FOV transition. Replicated ADS state ensures correct animation alignment for all clients.</p>
-        </div>
-        <div class="feature-card">
-          <h4>Flash Grenade</h4>
-          <p>Physics-simulated throwable, server-spawned and replicated. Screen-blind effect applied via Client RPCs after server-side distance checks.</p>
-        </div>
-        <div class="feature-card">
-          <h4>Reveal Grenade</h4>
-          <p>Reveals enemy positions within a radius via server-side radial scan. Wall-through visibility using post-process materials and custom depth.</p>
-        </div>
-        <div class="feature-card">
-          <h4>Bullet Decals &amp; Hit VFX</h4>
-          <p>Server-authoritative hit confirmation spawns impact decals and VFX, replicated so all clients see consistent hit feedback.</p>
-        </div>
-      </div>
-    </section>
+  <h2>Core Features &amp; Systems</h2>
 
+  <div class="system-list">
+
+    <div class="system-item">
+      <div class="system-info">
+        <h4>Movement System</h4>
+        <p>Replicated character movement with server-validated sprint and client-server synchronisation across all connected players.</p>
+      </div>
+      <div class="system-video">
+        <video controls loading="lazy">
+          <source src="../assets/videos/fps-movement.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="system-item">
+      <div class="system-info">
+        <h4>Weapon System</h4>
+        <p>Server-authoritative line-trace shooting with replicated muzzle flash, impact VFX, and sound. Damage confirmed server-side via RPC.</p>
+      </div>
+      <div class="system-video">
+        <video controls loading="lazy">
+          <source src="../assets/videos/fps-weapon.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="system-item">
+      <div class="system-info">
+        <h4>Aim Down Sights</h4>
+        <p>Hold-based ADS with smooth camera FOV transition. Replicated ADS state ensures correct animation alignment for all clients.</p>
+      </div>
+      <div class="system-video">
+        <video controls loading="lazy">
+          <source src="../assets/videos/fps-ads.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="system-item">
+      <div class="system-info">
+        <h4>Flash Grenade</h4>
+        <p>Physics-simulated throwable, server-spawned and replicated. Screen-blind effect applied via Client RPCs after server-side distance checks.</p>
+      </div>
+      <div class="system-video">
+        <video controls loading="lazy">
+          <source src="../assets/videos/fps-flash.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="system-item">
+      <div class="system-info">
+        <h4>Reveal Grenade</h4>
+        <p>Reveals enemy positions within a radius via server-side radial scan. Wall-through visibility using post-process materials and custom depth.</p>
+      </div>
+      <div class="system-video">
+        <video controls loading="lazy">
+          <source src="../assets/videos/fps-reveal.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="system-item">
+      <div class="system-info">
+        <h4>Bullet Decals &amp; Hit VFX</h4>
+        <p>Server-authoritative hit confirmation spawns impact decals and VFX, replicated so all clients see consistent hit feedback.</p>
+      </div>
+      <div class="system-video">
+        <video controls loading="lazy">
+          <source src="../assets/videos/fps-hitvfx.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+  </div>
+</section>
     <section class="detail-section fade-up">
       <h2>Networking Architecture</h2>
       <h3>Server-Authoritative Design</h3>
