@@ -734,3 +734,7 @@ footer {
   .system-video.dual { grid-template-columns: 1fr; }
   .dual-video-wrap:first-child { border-right: none; border-bottom: 1px solid var(--border); }
 }
+
+.system-video:not(.dual) {
+  min-height: 200px;
+}
