@@ -650,3 +650,124 @@ footer {
   .project-meta-item { border-right: none; border-bottom: 1px solid var(--border); }
   .project-meta-item:last-child { border-bottom: none; }
 }
+
+.system-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.system-item {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  border-bottom: 1px solid var(--border);
+}
+.system-item:last-child { border-bottom: none; }
+
+.system-info {
+  padding: 1.5rem;
+  border-right: 1px solid var(--border);
+}
+.system-info h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.system-info p {
+  font-size: 0.92rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.system-video {
+  position: relative;
+  overflow: hidden;
+  background: var(--border-light);
+}
+.system-video video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.system-video.dual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: static;
+  height: auto;
+}
+.system-video.dual video {
+  position: static;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dual-video-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.dual-video-wrap:first-child { border-right: 1px solid var(--border); }
+
+.video-label {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.35rem 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .system-item { grid-template-columns: 1fr; }
+  .system-info { border-right: none; border-bottom: 1px solid var(--border); }
+  .system-video.dual { grid-template-columns: 1fr; }
+  .dual-video-wrap:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+}
+
+.system-video:not(.dual) {
+  min-height: 200px;
+}
+
+.system-item-stack {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.system-item-stack:last-child { border-bottom: none; }
+
+.system-info-stack h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.system-info-stack p {
+  font-size: 0.92rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.system-video-stack {
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.system-video-stack video {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+}
