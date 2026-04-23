@@ -73,90 +73,82 @@
 
   <div class="system-list">
 
-    <!-- MOVEMENT — 2 videos side by side -->
-    <div class="system-item">
-      <div class="system-info">
+    <!-- MOVEMENT -->
+    <div class="system-item-stack">
+      <div class="system-info-stack">
         <h4>Movement System</h4>
         <p>Replicated character movement with server-validated sprint and client-server synchronisation across all connected players.</p>
       </div>
       <div class="system-video dual">
-        <video controls loading="lazy">
-          <source src="../assets/videos/walk.mp4" type="video/mp4">
-        </video>
-        <video controls loading="lazy">
-          <source src="../assets/videos/run.mp4" type="video/mp4">
-        </video>
+        <div class="dual-video-wrap">
+          <video controls loading="lazy"><source src="../assets/videos/walk.mp4" type="video/mp4"></video>
+          <span class="video-label">Walk</span>
+        </div>
+        <div class="dual-video-wrap">
+          <video controls loading="lazy"><source src="../assets/videos/run.mp4" type="video/mp4"></video>
+          <span class="video-label">Sprint</span>
+        </div>
       </div>
     </div>
 
     <!-- WEAPON SYSTEM — no video -->
-    <div class="system-item">
-      <div class="system-info" style="border-right:none;">
+    <div class="system-item-stack">
+      <div class="system-info-stack">
         <h4>Weapon System</h4>
         <p>Server-authoritative line-trace shooting with replicated muzzle flash, impact VFX, and sound. Damage confirmed server-side via RPC.</p>
       </div>
     </div>
 
-    <!-- ADS — 1 video -->
-    <div class="system-item">
-      <div class="system-info">
+    <!-- ADS -->
+    <div class="system-item-stack">
+      <div class="system-info-stack">
         <h4>Aim Down Sights</h4>
         <p>Hold-based ADS with smooth camera FOV transition. Replicated ADS state ensures correct animation alignment for all clients.</p>
       </div>
-      <div class="system-video">
-        <video controls loading="lazy">
-          <source src="../assets/videos/ads-on-off.mp4" type="video/mp4">
-        </video>
+      <div class="system-video-stack">
+        <video controls loading="lazy"><source src="../assets/videos/ads-on-off.mp4" type="video/mp4"></video>
       </div>
     </div>
 
-    <!-- FLASH GRENADE — 2 videos side by side -->
-    <div class="system-item">
-      <div class="system-info">
+    <!-- FLASH GRENADE -->
+    <div class="system-item-stack">
+      <div class="system-info-stack">
         <h4>Flash Grenade</h4>
         <p>Physics-simulated throwable, server-spawned and replicated. Screen-blind effect applied via Client RPCs after server-side distance checks.</p>
       </div>
       <div class="system-video dual">
         <div class="dual-video-wrap">
-          <video controls loading="lazy">
-            <source src="../assets/videos/fps-flash-client1.mp4" type="video/mp4">
-          </video>
+          <video controls loading="lazy"><source src="../assets/videos/fps-flash-client1.mp4" type="video/mp4"></video>
           <span class="video-label">Client 1</span>
         </div>
         <div class="dual-video-wrap">
-          <video controls loading="lazy">
-            <source src="../assets/videos/fps-flash-client2.mp4" type="video/mp4">
-          </video>
+          <video controls loading="lazy"><source src="../assets/videos/fps-flash-client2.mp4" type="video/mp4"></video>
           <span class="video-label">Client 2</span>
         </div>
       </div>
     </div>
 
-    <!-- REVEAL GRENADE — 2 videos side by side -->
-    <div class="system-item">
-      <div class="system-info">
+    <!-- REVEAL GRENADE -->
+    <div class="system-item-stack">
+      <div class="system-info-stack">
         <h4>Reveal Grenade</h4>
         <p>Reveals enemy positions within a radius via server-side radial scan. Wall-through visibility using post-process materials and custom depth.</p>
       </div>
       <div class="system-video dual">
         <div class="dual-video-wrap">
-          <video controls loading="lazy">
-            <source src="../assets/videos/fps-reveal-client1.mp4" type="video/mp4">
-          </video>
+          <video controls loading="lazy"><source src="../assets/videos/fps-reveal-client1.mp4" type="video/mp4"></video>
           <span class="video-label">Client 1</span>
         </div>
         <div class="dual-video-wrap">
-          <video controls loading="lazy">
-            <source src="../assets/videos/fps-reveal-client2.mp4" type="video/mp4">
-          </video>
+          <video controls loading="lazy"><source src="../assets/videos/fps-reveal-client2.mp4" type="video/mp4"></video>
           <span class="video-label">Client 2</span>
         </div>
       </div>
     </div>
 
     <!-- BULLET DECALS — no video -->
-    <div class="system-item">
-      <div class="system-info" style="border-right:none;">
+    <div class="system-item-stack">
+      <div class="system-info-stack">
         <h4>Bullet Decals &amp; Hit VFX</h4>
         <p>Server-authoritative hit confirmation spawns impact decals and VFX, replicated so all clients see consistent hit feedback.</p>
       </div>
