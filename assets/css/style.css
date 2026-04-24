@@ -721,14 +721,13 @@ footer {
 
 .video-label {
   text-align: center;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   color: var(--muted);
-  padding: 0.35rem 0;
-  background: var(--bg);
-  border-top: 1px solid var(--border);
+  padding: 0.3rem 0;
+  background: transparent;
+  border-top: none;
 }
 
 @media (max-width: 640px) {
@@ -766,6 +765,8 @@ footer {
 
 .system-video-stack {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .system-video-stack video {
   width: 50%;
