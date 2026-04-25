@@ -777,11 +777,14 @@ footer {
 }
 
 .feature-grid-center {
+  display: flex;
   justify-content: center;
   margin-top: 1rem;
+  gap: 1rem;
 }
 .feature-grid-center .feature-card {
-  max-width: calc((100% - 2rem) / 3);
+  min-width: 210px;
+  flex: 0 1 calc((100% - 2rem) / 3);
 }
 
 .triple-video-wrap {
@@ -810,6 +813,11 @@ footer {
   padding: 0.2rem 0;
   background: transparent;
   border-top: none;
+}
+
+@media (max-width: 640px) {
+  .feature-grid-center { flex-direction: column; }
+  .feature-grid-center .feature-card { min-width: unset; flex: 1; }
 }
 
 @media (max-width: 640px) {
