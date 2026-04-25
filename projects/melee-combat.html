@@ -38,24 +38,52 @@
 
   <div class="project-detail-body">
 
-    <div style="margin-bottom:2rem;" class="fade-up">
+    <!-- Play Demo — centered -->
+    <div style="text-align:center; margin-bottom:2rem;" class="fade-up">
       <a href="https://drive.google.com/drive/folders/1jWigeaN3N8AYRt2du7od_GH6Y4pzyDy4?usp=drive_link"
          target="_blank" rel="noopener" class="btn btn-primary">▶ Play Demo</a>
     </div>
 
+    <!-- Video 1 -->
+    <div style="margin:0 auto 3rem;" class="fade-up">
+      <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px;">
+        <iframe
+          src="https://www.youtube.com/embed/xF5unwnmG-M"
+          style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+          allowfullscreen loading="lazy">
+        </iframe>
+      </div>
+    </div>
+
     <section class="detail-section fade-up">
       <h2>Project Goal</h2>
-      <p>My goal with this project was to design and develop a modular, responsive, and immersive third-person melee combat system featuring proper 
-        collision handling, flexible damage system, dynamic enemy AIs and visual/audio feedback for the player. Inspired by games like Sekiro, 
-        Ghost of Tsushima, I wanted to create a smooth system that felt satisfying to play and scalable enough to support a full RPG.</p>
+      <p>My goal with this project was to design and develop a modular, responsive, and immersive third-person melee combat system featuring proper collision handling, a flexible damage system, dynamic enemy AI, and visual/audio feedback for the player. Inspired by games like Sekiro and Ghost of Tsushima, I wanted to create a smooth system that felt satisfying to play and scalable enough to support a full RPG.</p>
     </section>
+
+    <section class="detail-section fade-up">
+      <h2>Project Overview</h2>
+      <p>This project showcases a modular third-person melee combat system developed in Unreal Engine 5, designed to demonstrate core gameplay mechanics, AI design, and responsive UI.</p>
+      <p>The system supports light and heavy attack combos, parry and block mechanics, a shared damage interface, and a fully integrated health and stamina system tied to the UI. Enemies use unique behavior trees, perception systems, and EQS-based decision-making for intelligent combat behavior and movement.</p>
+      <p>The project was built for scalability and modularity, using Unreal's component-based architecture, interfaces, and clean separation between player and AI logic.</p>
+    </section>
+
+    <!-- Video 2 -->
+    <div style="margin:0 auto 3rem;" class="fade-up">
+      <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px;">
+        <iframe
+          src="https://www.youtube.com/embed/a5R2hj2JQ_A"
+          style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+          allowfullscreen loading="lazy">
+        </iframe>
+      </div>
+    </div>
 
     <section class="detail-section fade-up">
       <h2>Combat Mechanics</h2>
       <div class="feature-grid">
         <div class="feature-card">
           <h4>Light &amp; Heavy Attack Combos</h4>
-          <p>Chained animations using montage-based combo logic. Players can switch between light and heavy attacks mid-chain.</p>
+          <p>Smooth chained animations using montage-based combo logic. Players can switch between light and heavy attacks mid-chain.</p>
         </div>
         <div class="feature-card">
           <h4>Directional Attacks</h4>
@@ -78,19 +106,21 @@
 
     <section class="detail-section fade-up">
       <h2>Damage System</h2>
-      <p>Built around a custom <strong>DamageComponent</strong> and <strong>DamageInterface</strong> — attachable to any actor for consistent damage handling with per-actor customisation. Both Player and Enemy implement IDamageInterface for shared calls with their own response logic.</p>
+      <p>Built around a custom <strong>DamageComponent</strong> and <strong>DamageInterface</strong> — attachable to any actor for consistent damage handling with per-actor customisation. Both Player and Enemy implement IDamageInterface for shared function calls while defining their own response logic.</p>
+      <p>By separating logic through a component and interface-based design, the system supports clean, scalable, and highly modular development — easy to add or update damageable actors without rewriting logic.</p>
       <h3>Interface Functions</h3>
       <ul>
         <li><strong>TakeDamage()</strong> — Accepts incoming damage, triggers hit reactions and VFX</li>
         <li><strong>Heal()</strong> — Restores health up to the actor's maximum</li>
         <li><strong>SetMaxHealth / SetCurrentHealth</strong> — Blueprint or runtime stat setup</li>
         <li><strong>Die / OnDeath</strong> — Actor-specific death behavior</li>
-        <li><strong>GetCurrentHealth, IsDead</strong> — Status queries for UI, combat logic, and AI</li>
+        <li><strong>GetCurrentHealth, GetMaxHealth, IsDead</strong> — Status queries for UI, combat logic, and AI</li>
       </ul>
     </section>
 
     <section class="detail-section fade-up">
       <h2>Enemy AI</h2>
+      <p>The system features multiple enemy classes, each with unique combat behavior and attack patterns. All types are driven by a shared underlying AI architecture but individually configured to behave differently.</p>
       <ul>
         <li><strong>Fast Attackers</strong> — Strike quickly and unpredictably, forcing faster player reactions</li>
         <li><strong>Strafing Enemies</strong> — Actively reposition using EQS before engaging</li>
@@ -101,19 +131,19 @@
       <div class="feature-grid" style="margin-top:1rem;">
         <div class="feature-card">
           <h4>AI Controller</h4>
-          <p>Manages Behavior Tree execution and converts Perception System updates into Blackboard changes for state transitions.</p>
+          <p>Possesses the enemy pawn on spawn, manages Behavior Tree execution, and converts Perception System updates into Blackboard changes for state transitions.</p>
         </div>
         <div class="feature-card">
           <h4>Behavior Trees</h4>
-          <p>Each enemy class has a unique Behavior Tree driving state switching in response to Blackboard changes.</p>
+          <p>Each enemy class has a unique Behavior Tree driving state switching in response to Blackboard key changes triggered by perception updates.</p>
         </div>
         <div class="feature-card">
           <h4>AI Perception</h4>
-          <p>Sight-based player detection. Sends perception updates to the AI Controller for state transitions.</p>
+          <p>Sight-based player detection. Sends perception updates to the AI Controller for Blackboard state transitions.</p>
         </div>
         <div class="feature-card">
           <h4>EQS</h4>
-          <p>Scores environment points based on distance and visibility for dynamic enemy strafing and positioning.</p>
+          <p>Generates and scores environment points based on distance, visibility, and player location for dynamic enemy strafing and positioning.</p>
         </div>
       </div>
     </section>
@@ -125,12 +155,14 @@
         <li>Weapon trails on fast swings to convey motion and power</li>
         <li>Hit impact effects — sparks and blood bursts on hit events</li>
         <li>Sharp flashes and burst effects on parry and block</li>
+        <li>Brief flash/particle emission on player and enemy damage</li>
       </ul>
       <h3>SFX</h3>
       <ul>
         <li>Different swoosh sounds for light and heavy attacks</li>
         <li>Varying impact sounds depending on hit area</li>
         <li>Sharp metallic audio cues on successful parry and block</li>
+        <li>Subtle ambient SFX to keep combat grounded in the world</li>
       </ul>
     </section>
 
