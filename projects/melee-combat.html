@@ -153,24 +153,14 @@
       </ul>
       <h3>AI States</h3>
       <p>Idle · Attack · Frozen (Dazed/Parried) · Strafe</p>
-      <div class="feature-grid" style="margin-top:1rem;">
-        <div class="feature-card">
-          <h4>AI Controller</h4>
-          <p>Possesses the enemy pawn on spawn, manages Behavior Tree execution, and converts Perception System updates into Blackboard changes for state transitions.</p>
-        </div>
-        <div class="feature-card">
-          <h4>Behavior Trees</h4>
-          <p>Each enemy class has a unique Behavior Tree driving state switching in response to Blackboard key changes triggered by perception updates.</p>
-        </div>
-        <div class="feature-card">
-          <h4>AI Perception</h4>
-          <p>Sight-based player detection. Sends perception updates to the AI Controller for Blackboard state transitions.</p>
-        </div>
-        <div class="feature-card">
-          <h4>EQS</h4>
-          <p>Generates and scores environment points based on distance, visibility, and player location for dynamic enemy strafing and positioning.</p>
-        </div>
-      </div>
+
+<ul style="margin-top:1rem;">
+  <li><strong>AI Controller</strong> — Possesses the enemy pawn on spawn, manages Behavior Tree execution, and converts Perception System updates into Blackboard changes for state transitions.</li>
+  <li><strong>Behavior Trees</strong> — Each enemy class has a unique Behavior Tree driving state switching in response to Blackboard key changes triggered by perception updates.</li>
+  <li><strong>AI Perception</strong> — Sight-based player detection. Sends perception updates to the AI Controller for Blackboard state transitions.</li>
+  <li><strong>EQS</strong> — Generates and scores environment points based on distance, visibility, and player location for dynamic enemy strafing and positioning.</li>
+</ul>
+      
     </section>
 
     <section class="detail-section fade-up">
