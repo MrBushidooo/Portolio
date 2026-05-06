@@ -38,6 +38,15 @@
 
   <div class="project-detail-body">
 
+    <div style="margin:0 auto 3rem;" class="fade-up">
+  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px;">
+    <iframe
+      src="https://www.youtube.com/embed/yAjyUxNfGXc"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen loading="lazy">
+    </iframe>
+  </div>
+</div>
     <section class="detail-section fade-up">
       <h2>Project Goal</h2>
       <p>Recreate and expand upon the scan pulse mechanic from Death Stranding as a standalone, modular gameplay system — enhancing player interaction with the game world through detection, visual highlighting, and information overlays.</p>
@@ -83,6 +92,11 @@
         <li><strong>GradientSize</strong> — Controls the width of the gradient band / pulse edge</li>
       </ul>
 
+<div style="margin:1rem auto; max-width:880px;">
+  <img src="../assets/images/DeathStranding/scan-texture.png" alt="Scan Texture" style="width:100%; border-radius:8px; display:block;">
+  <p style="text-align:center; font-size:0.78rem; font-weight:500; color:var(--muted); margin-top:0.4rem;">Scan Texture</p>
+</div>
+      
       <h3>2. Sphere Mask (Animated Pulse)</h3>
       <p>A hollow sphere mask centered on the player, radius animated by a Blueprint timeline to produce the expanding scan pulse.</p>
       <ul>
@@ -91,13 +105,26 @@
         <li><strong>Hardness</strong> — Controls softness/thickness of the ring's edge</li>
       </ul>
 
+<div style="margin:1rem auto; max-width:880px;">
+  <img src="../assets/images/DeathStranding/sphere-mask.png" alt="Sphere Mask" style="width:100%; border-radius:8px; display:block;">
+  <p style="text-align:center; font-size:0.78rem; font-weight:500; color:var(--muted); margin-top:0.4rem;">Sphere Mask — Animated Pulse</p>
+</div>
+      
       <h3>3. Fresnel Highlighting with Bit Masking</h3>
       <p>Dynamic object highlighting using a Fresnel effect, with highlight colour determined by each object's stencil value via bit masking. Allows multiple highlight colours to coexist based on object-specific stencil values (e.g. threats vs. objectives).</p>
+
+<div style="margin:1rem auto; max-width:880px;">
+  <img src="../assets/images/DeathStranding/fresnel.png" alt="Fresnel Highlighting" style="width:100%; border-radius:8px; display:block;">
+  <p style="text-align:center; font-size:0.78rem; font-weight:500; color:var(--muted); margin-top:0.4rem;">Fresnel Highlighting with Bit Masking</p>
+</div>
+      
     </section>
 
     <section class="detail-section fade-up">
       <h2>ScanObject Interface</h2>
       <p>Applied to all actors that can be scanned via the visor. A per-frame line trace checks if the hit actor implements the interface, then calls the appropriate function.</p>
+
+      
       <ul>
         <li><strong>setIsThreat(bool)</strong> — Marks the actor as a threat; appearance reacts accordingly</li>
         <li><strong>getIsThreat()</strong> — Returns threat status, used by UI and stencil assignment at BeginPlay</li>
