@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weapon Throw & Recall System — Leonard Panging</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="../index.html">Leonard Panging<span>.</span></a>
+
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="../index.html">Projects</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <header class="project-detail-hero">
+    <p class="breadcrumb">
+      <a href="../index.html">← Projects</a>
+    </p>
+
+    <h1>Weapon Throw &amp; Recall System</h1>
+
+    <p class="lead">
+      A third-person melee weapon throw and recall system in Unreal Engine 5 featuring spline-based return movement, hover mechanics, collision damage, and responsive combat interactions.
+    </p>
+  </header>
+
+  <dl class="project-meta-strip">
+    <div class="project-meta-item">
+      <dt>Genre</dt>
+      <dd>Action Combat</dd>
+    </div>
+
+    <div class="project-meta-item">
+      <dt>Platform</dt>
+      <dd>PC (Windows)</dd>
+    </div>
+
+    <div class="project-meta-item">
+      <dt>Engine</dt>
+      <dd>Unreal Engine 5.5</dd>
+    </div>
+
+    <div class="project-meta-item">
+      <dt>Programming</dt>
+      <dd>C++ &amp; Blueprints</dd>
+    </div>
+
+    <div class="project-meta-item">
+      <dt>Focus</dt>
+      <dd>Gameplay Programming</dd>
+    </div>
+  </dl>
+
+  <div style="max-width:880px; margin:0 auto; padding:2rem 2rem 0;">
+    <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px;">
+
+      <iframe
+        src="https://www.youtube.com/embed/C4jqIEb3IbA"
+        style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+
+    </div>
+  </div>
+
+  <div class="project-detail-body">
+
+    <!-- PROJECT GOAL -->
+    <section class="detail-section fade-up">
+
+      <h2>Project Goal</h2>
+
+      <p>
+        Design and implement a responsive third-person weapon throw and recall mechanic inspired by modern action combat games, focusing on gameplay feel, movement behaviour, and combat responsiveness.
+      </p>
+
+      <p>
+        The primary objective was to build a reusable gameplay system capable of handling weapon travel, collision-based damage, dynamic return movement, and player interaction states while maintaining smooth visual feedback.
+      </p>
+
+      <p>Key learning objectives:</p>
+
+      <ul>
+        <li>Gameplay system architecture in Unreal Engine 5</li>
+        <li>C++ implementation of throwable weapon mechanics</li>
+        <li>Spline-based movement and return behaviour</li>
+        <li>Collision handling and combat interaction logic</li>
+        <li>State-driven weapon behaviour management</li>
+      </ul>
+
+    </section>
+
+    <!-- PROJECT OVERVIEW -->
+    <section class="detail-section fade-up">
+
+      <h2>Project Overview</h2>
+
+      <p>
+        A third-person weapon throw and recall system built in Unreal Engine 5 using C++ and Blueprints. The project focuses on creating a satisfying combat interaction loop where the player can throw a melee weapon, damage enemies through collision, and dynamically recall the weapon back to the player's hand.
+      </p>
+
+      <p>
+        The system uses custom movement logic and spline interpolation to create smooth return trajectories while supporting gameplay states such as forward throw, hover, hit reaction, and recall. Additional polish systems including weapon rotation, impact feedback, and responsive state transitions were implemented to improve overall gameplay feel.
+      </p>
+
+    </section>
+
+    <!-- CORE FEATURES -->
+    <section class="detail-section fade-up">
+
+      <h2>Core Features &amp; Systems</h2>
+
+      <div class="system-list">
+
+        <!-- THROW SYSTEM -->
+        <div class="system-item-stack">
+
+          <div class="system-info-stack">
+            <h4>Weapon Throw System</h4>
+
+            <p>
+              Forward throw mechanic implemented using custom projectile-style movement. The weapon travels independently after launch while maintaining directional momentum and collision detection.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- RECALL SYSTEM -->
+        <div class="system-item-stack">
+
+          <div class="system-info-stack">
+            <h4>Weapon Recall System</h4>
+
+            <p>
+              Spline-based recall movement dynamically updates the weapon trajectory back toward the player's hand socket. Return behaviour smoothly tracks player movement during recall to maintain responsive gameplay feel.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- HOVER STATE -->
+        <div class="system-item-stack">
+
+          <div class="system-info-stack">
+            <h4>Hover State</h4>
+
+            <p>
+              Implemented a temporary hover state where the weapon pauses mid-air before recall. This state creates stronger anticipation and improves combat readability during gameplay interactions.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- COLLISION & DAMAGE -->
+        <div class="system-item-stack">
+
+          <div class="system-info-stack">
+            <h4>Collision Damage System</h4>
+
+            <p>
+              Enemy collision detection applies damage on impact while preventing repeated damage triggers during continuous overlap. Hit events are handled through dedicated damage logic and gameplay state checks.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- STATE MANAGEMENT -->
+        <div class="system-item-stack">
+
+          <div class="system-info-stack">
+            <h4>Weapon State Management</h4>
+
+            <p>
+              Weapon behaviour is controlled using gameplay states such as idle, thrown, hovering, and returning. State-driven logic ensures clean transitions between mechanics and simplifies future system expansion.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- ROTATION -->
+        <div class="system-item-stack">
+
+          <div class="system-info-stack">
+            <h4>Weapon Rotation &amp; Visual Feedback</h4>
+
+            <p>
+              Added procedural weapon rotation during travel to enhance motion readability and combat impact. Visual feedback systems improve the perceived weight and responsiveness of the weapon during throw and recall actions.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <div style="padding-top:2rem;border-top:1px solid var(--border);">
+      <a href="../index.html" class="btn btn-secondary">
+        ← Back to Projects
+      </a>
+    </div>
+
+  </div>
+
+  <footer>
+
+    <p>© 2025 Leonard Panging</p>
+
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/leonard-panging-a372b2229" target="_blank" rel="noopener">LinkedIn</a>
+
+      <a href="http://www.youtube.com/@LeonardPanging" target="_blank" rel="noopener">YouTube</a>
+
+      <a href="https://github.com/MrBushidooo" target="_blank" rel="noopener">GitHub</a>
+
+      <a href="https://x.com/leo_fbx" target="_blank" rel="noopener">X</a>
+    </div>
+
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+
+</body>
+</html>
