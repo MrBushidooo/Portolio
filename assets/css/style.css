@@ -832,3 +832,11 @@ footer {
 .skill-list li{
   margin-bottom: 0.35rem;
 }
+a.skill-block:hover {
+  box-shadow: 0 4px 16px rgba(192,57,43,0.1);
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+a.skill-block:hover h3 {
+  color: var(--accent);
+}
