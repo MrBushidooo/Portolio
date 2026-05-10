@@ -95,99 +95,156 @@
     </section>
 
     <!-- CORE FEATURES -->
-    <section class="detail-section fade-up">
+<section class="detail-section fade-up">
 
-      <h2>Core Features &amp; Systems</h2>
+  <h2>Core Features &amp; Systems</h2>
 
-      <div class="system-list">
+  <div class="system-list">
 
-        <!-- THROW SYSTEM -->
-        <div class="system-item-stack">
+    <!-- GAMEPLAY ARCHITECTURE -->
+    <div class="system-item-stack">
 
-          <div class="system-info-stack">
-            <h4>Weapon Throw System</h4>
+      <div class="system-info-stack">
 
-            <p>
-              Forward throw mechanic implemented using custom projectile-style movement. The weapon travels independently after launch while maintaining directional momentum and collision detection.
-            </p>
+        <h4>Gameplay Architecture</h4>
 
-          </div>
+        <p>
+          The throwable weapon system is built around a modular state-driven architecture that separates character input, animation timing, movement behaviour, and weapon logic into independent gameplay layers.
+        </p>
 
-        </div>
+        <p>
+          The player character handles:
+        </p>
 
-        <!-- RECALL SYSTEM -->
-        <div class="system-item-stack">
+        <ul>
+          <li>Input processing</li>
+          <li>Camera and movement control</li>
+          <li>Weapon ownership</li>
+          <li>Attack state management</li>
+        </ul>
 
-          <div class="system-info-stack">
-            <h4>Weapon Recall System</h4>
+        <p>
+          The weapon actor independently handles:
+        </p>
 
-            <p>
-              Spline-based recall movement dynamically updates the weapon trajectory back toward the player's hand socket. Return behaviour smoothly tracks player movement during recall to maintain responsive gameplay feel.
-            </p>
+        <ul>
+          <li>Projectile simulation</li>
+          <li>Flight behaviour</li>
+          <li>Collision state switching</li>
+          <li>Rotational/spin behaviour</li>
+          <li>Recall logic</li>
+          <li>Spline-based return movement</li>
+        </ul>
 
-          </div>
+        <p>
+          The system operates through a finite state flow:
+        </p>
 
-        </div>
+        <pre><code>InHand → Flying → Returning → InHand</code></pre>
 
-        <!-- HOVER STATE -->
-        <div class="system-item-stack">
+        <p>
+          Each state governs the weapon’s movement, collision behaviour, attachment state, and recall logic, ensuring deterministic gameplay flow while preventing overlapping actions such as repeated throws or recalls.
+        </p>
 
-          <div class="system-info-stack">
-            <h4>Hover State</h4>
-
-            <p>
-              Implemented a temporary hover state where the weapon pauses mid-air before recall. This state creates stronger anticipation and improves combat readability during gameplay interactions.
-            </p>
-
-          </div>
-
-        </div>
-
-        <!-- COLLISION & DAMAGE -->
-        <div class="system-item-stack">
-
-          <div class="system-info-stack">
-            <h4>Collision Damage System</h4>
-
-            <p>
-              Enemy collision detection applies damage on impact while preventing repeated damage triggers during continuous overlap. Hit events are handled through dedicated damage logic and gameplay state checks.
-            </p>
-
-          </div>
-
-        </div>
-
-        <!-- STATE MANAGEMENT -->
-        <div class="system-item-stack">
-
-          <div class="system-info-stack">
-            <h4>Weapon State Management</h4>
-
-            <p>
-              Weapon behaviour is controlled using gameplay states such as idle, thrown, hovering, and returning. State-driven logic ensures clean transitions between mechanics and simplifies future system expansion.
-            </p>
-
-          </div>
-
-        </div>
-
-        <!-- ROTATION -->
-        <div class="system-item-stack">
-
-          <div class="system-info-stack">
-            <h4>Weapon Rotation &amp; Visual Feedback</h4>
-
-            <p>
-              Added procedural weapon rotation during travel to enhance motion readability and combat impact. Visual feedback systems improve the perceived weight and responsiveness of the weapon during throw and recall actions.
-            </p>
-
-          </div>
-
-        </div>
+        <p>
+          Weapon execution is synchronized through custom <code>AnimNotify</code> events, allowing the throw to occur precisely at the correct animation frame rather than directly on input press, resulting in tighter combat responsiveness and animation integration.
+        </p>
 
       </div>
 
-    </section>
+    </div>
+
+    <!-- THROW SYSTEM -->
+    <div class="system-item-stack">
+
+      <div class="system-info-stack">
+
+        <h4>Throw System</h4>
+
+        <p>
+          The throw system synchronizes gameplay execution with animation timing rather than triggering directly on input. When the player attacks, the character enters an attacking state while the actual release is handled through a custom <code>AnimNotify</code> inside the throw animation.
+        </p>
+
+        <p>
+          At the notify frame:
+        </p>
+
+        <ul>
+          <li>The weapon detaches from the hand socket</li>
+          <li>The player’s control rotation is converted into a throw direction</li>
+          <li>The weapon transitions into the <code>Flying</code> state</li>
+          <li>Projectile simulation is activated using <code>UProjectileMovementComponent</code></li>
+        </ul>
+
+        <p>
+          Using controller rotation instead of character forward direction ensures camera-accurate throws during traversal and directional changes.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- FLIGHT BEHAVIOUR -->
+    <div class="system-item-stack">
+
+      <div class="system-info-stack">
+
+        <h4>Flight Behaviour</h4>
+
+        <p>
+          Once thrown, the weapon enters a projectile-driven flight state configured for gravity-free directional travel with sweep collision enabled.
+        </p>
+
+        <p>
+          During flight, the system:
+        </p>
+
+        <ul>
+          <li>Tracks distance from the initial throw position</li>
+          <li>Applies rotational spin behaviour</li>
+          <li>Monitors conditions for automatic recall</li>
+        </ul>
+
+        <p>
+          A configurable maximum throw distance prevents indefinite projectile travel and triggers recall once exceeded. Separating flight into its own state allows the weapon to simulate independently from the player while maintaining predictable behaviour.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- DYNAMIC RECALL -->
+    <div class="system-item-stack">
+
+      <div class="system-info-stack">
+
+        <h4>Dynamic Recall System</h4>
+
+        <p>
+          The recall system transitions the weapon from projectile simulation into spline-driven interpolation to create a curved return path. When recall begins, projectile movement is disabled and a runtime spline is generated between the weapon and the player’s hand socket.
+        </p>
+
+        <p>
+          The spline uses:
+        </p>
+
+        <ul>
+          <li>A start point at the weapon location</li>
+          <li>An offset midpoint for curvature</li>
+          <li>A live endpoint attached to the player’s hand socket</li>
+        </ul>
+
+        <p>
+          The endpoint updates continuously during recall, allowing the weapon to follow the player in real time while moving or changing direction. Movement is interpolated along the spline using normalized alpha progression before the weapon reattaches to the character socket on catch completion.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
     <div style="padding-top:2rem;border-top:1px solid var(--border);">
       <a href="../index.html" class="btn btn-secondary">
