@@ -21,7 +21,7 @@
     <p class="breadcrumb"><a href="../index.html">← Projects</a></p>
     
     <h1>Melee Combat System</h1>
-    <p class="lead">Modular third-person combat with combo attacks, parry mechanics, and EQS-driven enemy AI — inspired by Sekiro and Ghost of Tsushima.</p>
+    <p class="lead">Modular third-person combat with combo attacks, parry mechanics, and EQS-driven enemy AI - inspired by Sekiro and Ghost of Tsushima.</p>
   </header>
 
   <dl class="project-meta-strip">
@@ -126,8 +126,8 @@
 
     <section class="detail-section fade-up">
       <h2>Damage System</h2>
-      <p>Built around a custom <strong>DamageComponent</strong> and <strong>DamageInterface</strong> — attachable to any actor for consistent damage handling with per-actor customisation. Both Player and Enemy implement IDamageInterface for shared function calls while defining their own response logic.</p>
-      <p>By separating logic through a component and interface-based design, the system supports clean, scalable, and highly modular development — easy to add or update damageable actors without rewriting logic.</p>
+      <p>Built around a custom <strong>DamageComponent</strong> and <strong>DamageInterface</strong> - attachable to any actor for consistent damage handling with per-actor customisation. Both Player and Enemy implement IDamageInterface for shared function calls while defining their own response logic.</p>
+      <p>By separating logic through a component and interface-based design, the system supports clean, scalable, and highly modular development - easy to add or update damageable actors without rewriting logic.</p>
       <h3>Interface Functions</h3>
       <ul>
         <li><strong>TakeDamage()</strong> — Accepts incoming damage, triggers hit reactions and VFX</li>
@@ -142,18 +142,18 @@
       <h2>Enemy AI</h2>
       <p>The system features multiple enemy classes, each with unique combat behavior and attack patterns. All types are driven by a shared underlying AI architecture but individually configured to behave differently.</p>
       <ul>
-        <li><strong>Fast Attackers</strong> — Strike quickly and unpredictably, forcing faster player reactions</li>
-        <li><strong>Strafing Enemies</strong> — Actively reposition using EQS before engaging</li>
-        <li><strong>Boss Enemies</strong> — Heavy-hitting with larger hitboxes and aggressive AI logic</li>
+        <li><strong>Fast Attackers</strong> - Strike quickly and unpredictably, forcing faster player reactions</li>
+        <li><strong>Strafing Enemies</strong> - Actively reposition using EQS before engaging</li>
+        <li><strong>Boss Enemies</strong> - Heavy-hitting with larger hitboxes and aggressive AI logic</li>
       </ul>
       <h3>AI States</h3>
       <p>Idle · Attack · Frozen (Dazed/Parried) · Strafe</p>
 
 <ul style="margin-top:1rem;">
-  <li><strong>AI Controller</strong> — Possesses the enemy pawn on spawn, manages Behavior Tree execution, and converts Perception System updates into Blackboard changes for state transitions.</li>
-  <li><strong>Behavior Trees</strong> — Each enemy class has a unique Behavior Tree driving state switching in response to Blackboard key changes triggered by perception updates.</li>
-  <li><strong>AI Perception</strong> — Sight-based player detection. Sends perception updates to the AI Controller for Blackboard state transitions.</li>
-  <li><strong>EQS</strong> — Generates and scores environment points based on distance, visibility, and player location for dynamic enemy strafing and positioning.</li>
+  <li><strong>AI Controller</strong> - Possesses the enemy pawn on spawn, manages Behavior Tree execution, and converts Perception System updates into Blackboard changes for state transitions.</li>
+  <li><strong>Behavior Trees</strong> - Each enemy class has a unique Behavior Tree driving state switching in response to Blackboard key changes triggered by perception updates.</li>
+  <li><strong>AI Perception</strong> - Sight-based player detection. Sends perception updates to the AI Controller for Blackboard state transitions.</li>
+  <li><strong>EQS</strong> - Generates and scores environment points based on distance, visibility, and player location for dynamic enemy strafing and positioning.</li>
 </ul>
 
       <!-- AI video -->
@@ -183,7 +183,7 @@
       <h3>VFX (Niagara)</h3>
       <ul>
         <li>Weapon trails on fast swings to convey motion and power</li>
-        <li>Hit impact effects — sparks and blood bursts on hit events</li>
+        <li>Hit impact effects - sparks and blood bursts on hit events</li>
         <li>Sharp flashes and burst effects on parry and block</li>
         <li>Brief flash/particle emission on player and enemy damage</li>
       </ul>
