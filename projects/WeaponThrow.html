@@ -192,6 +192,14 @@
         <div class="system-item-stack">
           <div class="system-info-stack">
             <h4>Dynamic Recall System</h4>
+            <div style="margin:1rem auto; max-width:700px;">
+  <img
+    src="../assets/videos/recall.gif"
+    alt="Dynamic Recall System"
+    style="width:100%; border-radius:8px; display:block;"
+  />
+  <p style="text-align:center; font-size:0.78rem; font-weight:500; color:var(--muted); margin-top:0.4rem;">Dynamic Recall — Spline-Based Return</p>
+</div>
             <p>The recall system transitions the weapon from projectile simulation into spline-driven interpolation to create a curved return path. When recall begins, projectile movement is disabled and a runtime spline is generated between the weapon and the player's hand socket.</p>
             <p>The spline uses:</p>
             <ul>
@@ -199,6 +207,7 @@
               <li>An offset midpoint for curvature</li>
               <li>A live endpoint attached to the player's hand socket</li>
             </ul>
+            
             <p>The endpoint updates continuously during recall, allowing the weapon to follow the player in real time while moving or changing direction. Movement is interpolated along the spline using normalized alpha progression before the weapon reattaches to the character socket on catch completion.</p>
           </div>
         </div>
